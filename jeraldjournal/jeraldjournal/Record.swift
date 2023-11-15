@@ -4,7 +4,7 @@ import Photos
 import AVFoundation
 import Speech
 import Foundation
-
+import FirebaseFirestore
 
 struct ChatMessage {
     var sender: Sender
@@ -19,7 +19,7 @@ enum Sender {
 }
 
 struct Record: View {
-
+    var entryId: String
     @State private var messages: [ChatMessage] = [ChatMessage(sender: .ai, content: "Hey Zane, it's good to see you again. How'd you spend your day?")]
     @State private var currentMessage: String = ""
     @State private var selectedTab = 0
@@ -57,7 +57,7 @@ struct Record: View {
                     }
                 }
                 .background(
-                    NavigationLink(destination: PhotoSelection(), isActive: $navigateToFirstScreen) {
+                    NavigationLink(destination: PhotoSelection(entryId: self.entryId), isActive: $navigateToFirstScreen) {
                         EmptyView()
                     }
                 )
@@ -212,9 +212,11 @@ struct Record: View {
             let response = try await getChatResponse(conversation: messages)
             let aiResponse = response.choices.first?.message.content ?? ""
             messages.append(ChatMessage(sender: .ai, content: aiResponse))
+            updateConversationInFirestore(messages: messages)
             try await speakText(aiResponse)
         } catch {
             messages.append(ChatMessage(sender: .ai, content: "Error: \(error.localizedDescription)"))
+            updateConversationInFirestore(messages: messages)
         }
         currentMessage = "" // Clear the current message
     }
@@ -244,7 +246,7 @@ struct Record: View {
         let url = URL(string: "https://api.openai.com/v1/audio/speech")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let payload: [String: Any] = [
@@ -262,6 +264,7 @@ struct Record: View {
           }
 
           print("Payload size: \(data.count) bytes")
+            print("Entry ID: ", entryId)
 
           playMP3(payload: data)
 
@@ -345,6 +348,23 @@ struct Record: View {
         isRecording = false
     }
     
+    func updateConversationInFirestore(messages: [ChatMessage]) {
+        let db = Firestore.firestore()
+        let entryRef = db.collection("users").document("100100").collection("entries").document(entryId)
+        
+        let conversationUpdate = messages.map { $0.content }
+        
+        entryRef.updateData([
+            "Conversation": FieldValue.arrayUnion(conversationUpdate)
+        ]) { error in
+            if let error = error {
+                print("Error updating conversation: \(error.localizedDescription)")
+            } else {
+                print("Conversation updated successfully.")
+            }
+        }
+    }
+    
 }
 
 
@@ -369,7 +389,7 @@ extension View {
 
 struct Record_Previews: PreviewProvider {
     static var previews: some View {
-        Record()
+        Record(entryId: String(), audioEngine: AVAudioEngine())
     }
 }
 

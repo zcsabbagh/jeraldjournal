@@ -12,7 +12,7 @@ import Photos
 struct PhotoSelection: View {
     @State private var recentPhotos: [UIImage] = []
         @State private var navigateToSecondScreen = false
-        
+        var entryId: String
         var body: some View {
             NavigationStack {
                 VStack {
