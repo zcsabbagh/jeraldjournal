@@ -4,6 +4,9 @@ import Photos
 import AVFoundation
 import Speech
 import Foundation
+import Firebase
+import FirebaseFirestore
+
 
 
 struct ChatMessage {

@@ -22,6 +22,10 @@
 		2F7023722B043652003BD06D /* MusicSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023712B043652003BD06D /* MusicSelection.swift */; };
 		2F7023742B0436CA003BD06D /* api-configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023732B0436CA003BD06D /* api-configurations.swift */; };
 		2F7023772B0436F7003BD06D /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7023762B0436F7003BD06D /* OpenAI */; };
+		342AF5D82B0457E500D7F105 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 342AF5D72B0457E500D7F105 /* GoogleService-Info.plist */; };
+		342AF5DA2B045ADD00D7F105 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 342AF5D92B045ADD00D7F105 /* FirebaseFirestore */; };
+		342AF5DC2B045ADD00D7F105 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 342AF5DB2B045ADD00D7F105 /* FirebaseFirestoreSwift */; };
+		34B531CA2B04544E0021A1EE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 34B531C92B04544E0021A1EE /* FirebaseAnalytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,7 @@
 		2F70236F2B043638003BD06D /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		2F7023712B043652003BD06D /* MusicSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSelection.swift; sourceTree = "<group>"; };
 		2F7023732B0436CA003BD06D /* api-configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "api-configurations.swift"; sourceTree = "<group>"; };
+		342AF5D72B0457E500D7F105 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +73,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B531CA2B04544E0021A1EE /* FirebaseAnalytics in Frameworks */,
 				2F7023772B0436F7003BD06D /* OpenAI in Frameworks */,
+				342AF5DA2B045ADD00D7F105 /* FirebaseFirestore in Frameworks */,
+				342AF5DC2B045ADD00D7F105 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +100,7 @@
 		2F70232E2B0435C2003BD06D = {
 			isa = PBXGroup;
 			children = (
+				342AF5D72B0457E500D7F105 /* GoogleService-Info.plist */,
 				2F7023392B0435C2003BD06D /* jeraldjournal */,
 				2F7023512B0435C5003BD06D /* jeraldjournalTests */,
 				2F70235B2B0435C5003BD06D /* jeraldjournalUITests */,
@@ -172,6 +181,9 @@
 			name = jeraldjournal;
 			packageProductDependencies = (
 				2F7023762B0436F7003BD06D /* OpenAI */,
+				34B531C92B04544E0021A1EE /* FirebaseAnalytics */,
+				342AF5D92B045ADD00D7F105 /* FirebaseFirestore */,
+				342AF5DB2B045ADD00D7F105 /* FirebaseFirestoreSwift */,
 			);
 			productName = jeraldjournal;
 			productReference = 2F7023372B0435C2003BD06D /* jeraldjournal.app */;
@@ -247,6 +259,7 @@
 			mainGroup = 2F70232E2B0435C2003BD06D;
 			packageReferences = (
 				2F7023752B0436F7003BD06D /* XCRemoteSwiftPackageReference "OpenAI" */,
+				34B531C82B04544E0021A1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 2F7023382B0435C2003BD06D /* Products */;
 			projectDirPath = "";
@@ -266,6 +279,7 @@
 			files = (
 				2F7023422B0435C5003BD06D /* Preview Assets.xcassets in Resources */,
 				2F70233F2B0435C5003BD06D /* Assets.xcassets in Resources */,
+				342AF5D82B0457E500D7F105 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +670,14 @@
 				minimumVersion = 0.2.4;
 			};
 		};
+		34B531C82B04544E0021A1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.18.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -663,6 +685,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F7023752B0436F7003BD06D /* XCRemoteSwiftPackageReference "OpenAI" */;
 			productName = OpenAI;
+		};
+		342AF5D92B045ADD00D7F105 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34B531C82B04544E0021A1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		342AF5DB2B045ADD00D7F105 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34B531C82B04544E0021A1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		34B531C92B04544E0021A1EE /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34B531C82B04544E0021A1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 
