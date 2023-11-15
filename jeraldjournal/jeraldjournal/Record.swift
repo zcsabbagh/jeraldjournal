@@ -115,6 +115,7 @@ struct Record: View {
         do {
             let response = try await getJournalResponse(conversation: messages)
             journalSummary = response.choices.first?.message.content ?? "No summary available."
+            updateSummaryInFirestore(summary: journalSummary)
             print(journalSummary)
         } catch {
             print("Failed to fetch journal summary: \(error.localizedDescription)")
@@ -130,6 +131,7 @@ struct Record: View {
         isJournalSummaryLoading = true
         Task {
             await fetchJournalSummary()
+            updateConversationInFirestore(messages: messages)
             isJournalingFinished = true
         }
     }
@@ -212,11 +214,9 @@ struct Record: View {
             let response = try await getChatResponse(conversation: messages)
             let aiResponse = response.choices.first?.message.content ?? ""
             messages.append(ChatMessage(sender: .ai, content: aiResponse))
-            updateConversationInFirestore(messages: messages)
             try await speakText(aiResponse)
         } catch {
             messages.append(ChatMessage(sender: .ai, content: "Error: \(error.localizedDescription)"))
-            updateConversationInFirestore(messages: messages)
         }
         currentMessage = "" // Clear the current message
     }
@@ -246,7 +246,7 @@ struct Record: View {
         let url = URL(string: "https://api.openai.com/v1/audio/speech")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let payload: [String: Any] = [
@@ -351,16 +351,33 @@ struct Record: View {
     func updateConversationInFirestore(messages: [ChatMessage]) {
         let db = Firestore.firestore()
         let entryRef = db.collection("users").document("100100").collection("entries").document(entryId)
-        
-        let conversationUpdate = messages.map { $0.content }
-        
+
+        // Reverse the order of messages and map them to their content
+        let conversationUpdate = messages.reversed().map { $0.content }
+
         entryRef.updateData([
-            "Conversation": FieldValue.arrayUnion(conversationUpdate)
+            "conversation": FieldValue.arrayUnion(conversationUpdate)
         ]) { error in
             if let error = error {
                 print("Error updating conversation: \(error.localizedDescription)")
             } else {
                 print("Conversation updated successfully.")
+            }
+        }
+    }
+
+
+    func updateSummaryInFirestore(summary: String) {
+        let db = Firestore.firestore()
+        let entryRef = db.collection("users").document("100100").collection("entries").document(entryId)
+        
+        entryRef.updateData([
+            "summary": summary
+        ]) { error in
+            if let error = error {
+                print("Error updating summary: \(error.localizedDescription)")
+            } else {
+                print("Summary updated successfully.")
             }
         }
     }

@@ -78,16 +78,18 @@ struct Home: View {
         // Initialize an empty Conversation array
         let conversation: [String] = []
         
-        // Initialize the summary, image fields
+        // Initialize the summary, image fields, journal cover
         let summary = ""
         let journalImages: [String] = []
+        let journalCover = ""
         
         // Add a new document with the current timestamp and an empty Conversation array
         var ref: DocumentReference? = nil
         ref = entriesRef.addDocument(data: [
             "timestamp": timestamp,
             "conversation": conversation,  // Add the Conversation array here
-            "summary": summary
+            "summary": summary,
+            "cover": journalCover
         ]) { error in
             if let error = error {
                 print("Error adding document: \(error)")

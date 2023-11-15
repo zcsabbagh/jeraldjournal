@@ -8,5 +8,5 @@
 import Foundation
 import OpenAI
 
-let config = OpenAI.Configuration(token: "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", organizationIdentifier: "org-eLi8lax12wDHqF4H2gc5qCkV")
+let config = OpenAI.Configuration(token: "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", organizationIdentifier: "org-eLi8lax12wDHqF4H2gc5qCkV")
 let openAI = OpenAI(configuration: config)
