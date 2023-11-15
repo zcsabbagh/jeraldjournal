@@ -244,7 +244,7 @@ struct Record: View {
         let url = URL(string: "https://api.openai.com/v1/audio/speech")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let payload: [String: Any] = [
