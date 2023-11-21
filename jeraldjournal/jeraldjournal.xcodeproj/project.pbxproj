@@ -22,10 +22,13 @@
 		2F7023722B043652003BD06D /* MusicSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023712B043652003BD06D /* MusicSelection.swift */; };
 		2F7023742B0436CA003BD06D /* api-configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7023732B0436CA003BD06D /* api-configurations.swift */; };
 		2F7023772B0436F7003BD06D /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7023762B0436F7003BD06D /* OpenAI */; };
-		342AF5D82B0457E500D7F105 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 342AF5D72B0457E500D7F105 /* GoogleService-Info.plist */; };
 		342AF5DA2B045ADD00D7F105 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 342AF5D92B045ADD00D7F105 /* FirebaseFirestore */; };
 		342AF5DC2B045ADD00D7F105 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 342AF5DB2B045ADD00D7F105 /* FirebaseFirestoreSwift */; };
 		34B531CA2B04544E0021A1EE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 34B531C92B04544E0021A1EE /* FirebaseAnalytics */; };
+		800DCD992B08718C00CCB944 /* PhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800DCD982B08718C00CCB944 /* PhoneNumberVC.swift */; };
+		8020ACDD2B08E773005C5EB1 /* OTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020ACDC2B08E773005C5EB1 /* OTPVC.swift */; };
+		8020ACDF2B09F928005C5EB1 /* EnterUserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020ACDE2B09F928005C5EB1 /* EnterUserName.swift */; };
+		80D6F4F52B078597000039D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80D6F4F42B078597000039D3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +68,10 @@
 		2F70236F2B043638003BD06D /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		2F7023712B043652003BD06D /* MusicSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSelection.swift; sourceTree = "<group>"; };
 		2F7023732B0436CA003BD06D /* api-configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "api-configurations.swift"; sourceTree = "<group>"; };
-		342AF5D72B0457E500D7F105 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		800DCD982B08718C00CCB944 /* PhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberVC.swift; sourceTree = "<group>"; };
+		8020ACDC2B08E773005C5EB1 /* OTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVC.swift; sourceTree = "<group>"; };
+		8020ACDE2B09F928005C5EB1 /* EnterUserName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterUserName.swift; sourceTree = "<group>"; };
+		80D6F4F42B078597000039D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +106,7 @@
 		2F70232E2B0435C2003BD06D = {
 			isa = PBXGroup;
 			children = (
-				342AF5D72B0457E500D7F105 /* GoogleService-Info.plist */,
+				80D6F4F42B078597000039D3 /* GoogleService-Info.plist */,
 				2F7023392B0435C2003BD06D /* jeraldjournal */,
 				2F7023512B0435C5003BD06D /* jeraldjournalTests */,
 				2F70235B2B0435C5003BD06D /* jeraldjournalUITests */,
@@ -124,6 +130,9 @@
 				2F70233A2B0435C2003BD06D /* jeraldjournalApp.swift */,
 				2F7023732B0436CA003BD06D /* api-configurations.swift */,
 				2F70236B2B0435D6003BD06D /* Home.swift */,
+				800DCD982B08718C00CCB944 /* PhoneNumberVC.swift */,
+				8020ACDE2B09F928005C5EB1 /* EnterUserName.swift */,
+				8020ACDC2B08E773005C5EB1 /* OTPVC.swift */,
 				2F70236F2B043638003BD06D /* Record.swift */,
 				2F7023712B043652003BD06D /* MusicSelection.swift */,
 				2F70236D2B0435F8003BD06D /* PhotoSelection.swift */,
@@ -279,7 +288,7 @@
 			files = (
 				2F7023422B0435C5003BD06D /* Preview Assets.xcassets in Resources */,
 				2F70233F2B0435C5003BD06D /* Assets.xcassets in Resources */,
-				342AF5D82B0457E500D7F105 /* GoogleService-Info.plist in Resources */,
+				80D6F4F52B078597000039D3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,11 +316,14 @@
 				2F7023442B0435C5003BD06D /* Persistence.swift in Sources */,
 				2F70236E2B0435F8003BD06D /* PhotoSelection.swift in Sources */,
 				2F7023742B0436CA003BD06D /* api-configurations.swift in Sources */,
+				8020ACDD2B08E773005C5EB1 /* OTPVC.swift in Sources */,
 				2F70233D2B0435C2003BD06D /* ContentView.swift in Sources */,
 				2F70236C2B0435D6003BD06D /* Home.swift in Sources */,
 				2F7023702B043638003BD06D /* Record.swift in Sources */,
 				2F70233B2B0435C2003BD06D /* jeraldjournalApp.swift in Sources */,
+				8020ACDF2B09F928005C5EB1 /* EnterUserName.swift in Sources */,
 				2F7023722B043652003BD06D /* MusicSelection.swift in Sources */,
+				800DCD992B08718C00CCB944 /* PhoneNumberVC.swift in Sources */,
 				2F7023472B0435C5003BD06D /* jeraldjournal.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +504,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -530,6 +543,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
